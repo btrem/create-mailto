@@ -1,15 +1,14 @@
 /*
  * create-mailto.js
  *
- * version 0.1
+ * version 0.2
  *
  * find email addresses in web pages and turn them into clickable <a href=mailto>
  *
  * requires jquery 1.12.4+
  */
 
-
-$(document).ready(function(){
+window.addEventListener('DOMContentLoaded', (event) => {
 
 	var emailAddress, mailtoElement;
 
@@ -22,7 +21,7 @@ $(document).ready(function(){
 		// get email address, preferring data-email attribute when it's available, text content if not
 		emailAddress = $(this).data('email') || $(this).text();
 
-		emailAddress = $.trim(emailAddress);
+		emailAddress = emailAddress.trim();
 
 		// validate email address
 		if (/^[^@]+@[^@.]+\.[^@]*\w\w$/.test(emailAddress)) {
@@ -45,4 +44,4 @@ $(document).ready(function(){
 
 	}); // end .each function
 
-}); // end document.ready function
+}); // end wrapper DOMContentLoaded function
