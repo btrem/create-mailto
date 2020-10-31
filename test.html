@@ -1,282 +1,282 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
+    <head>
 
-		<title>create-mailto.js test</title>
+        <title>create-mailto.js test</title>
 
-		<script
-			src="https://code.jquery.com/jquery-1.12.4.min.js"
-			integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-			crossorigin="anonymous"></script>
+        <script
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
 
-		<script src="create-mailto.js"></script>
+        <script src="create-mailto.js"></script>
 
-		<style>
+        <style>
 
 section {
-	padding-left: 1em;
-	padding-right: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .mailToYes {
-	border: 2px solid #2c2;
-	margin-bottom: 2em;
+    border: 2px solid #2c2;
+    margin-bottom: 2em;
 }
 
 .mailToNo {
-	border: 2px dashed #f55;
-	color: black;
-	background-color: #eee;
+    border: 2px dashed #f55;
+    color: black;
+    background-color: #eee;
 }
 
 dd {margin-bottom: 1em;}
 
 blockquote > p:before {
-	content: open-quote;
+    content: open-quote;
 }
 
 blockquote > p:after {
-	content: close-quote;
+    content: close-quote;
 }
 
-	  </style>
+        </style>
 
-	</head>
+    </head>
 
-	<body>
+    <body>
 
-		<h1>create-mailto.js test</h1>
+        <h1>create-mailto.js test</h1>
 
-		<section class="mailToYes">
+        <section class="mailToYes">
 
-			<h1>all the elements in this section should be <code>mailto</code> anchors</h1>
+            <h1>all the elements in this section should be <code>mailto</code> anchors</h1>
 
-			<section>
-	
-				<h1>elements with only a text node</h1>
-	
-				<dl>
-	
-					<dt>
-						<code>&lt;span class="email"&gt;me@example.com&lt;/span&gt;</code>
-					</dt>
-					<dd>
-						<span class="email">me@example.com</span>
-					</dd>
+            <section>
 
-					<dt>
-						<code>&lt;p class="email foo"&gt;me@example.com&lt;/p&gt;</code>
-					</dt>
-					<dd>
-						<p class="email foo">me@example.com</p>
-					</dd>
+                <h1>elements with only a text node</h1>
 
-					<dt>
-						<code>&lt;b itemprop="email"&gt;me@example.com&lt;/b&gt;</code>
-					</dt>
-					<dd>
-						<b itemprop="email">me@example.com</b>
-					</dd>
+                <dl>
 
-					<dt>
-						<div>&lt;span itemprop="email foo"&gt;me@example.com&lt;/span&gt;</div>
-					</dt>
-					<dd>
-						<div itemprop="email foo">me@example.com</div>
-					</dd>
-	
-					<dt>
-						<code>&lt;em data-email="me@example.com"&gt;email me&lt;/em&gt;</code>
-					</dt>
-					<dd>
-						<em data-email="me@example.com">email me</em>
-					</dd>
-	
-				</dl>
-	
-			</section>
-	
-	
-			<section>
-	
-				<h1>elements with descendent elements, but no &lt;a&gt; elements</h1>
-	
-				<dl>
-	
-					<dt>
-						<code>&lt;span class="email foo"&gt;&lt;i&gt;me&lt;i&gt;@example.com&lt;/span&gt;</code>
-					</dt>
-					<dd>
-						<span class="email foo"><i>me</i>@example.com</span>
-					</dd>
-	
-					<dt>
-						<code>&lt;p itemprop="email foo"&gt;&lt;i&gt;me&lt;i&gt;@example.com&lt;/p&gt;</code>
-					</dt>
-					<dd>
-						<p itemprop="email foo"><i>me</i>@example.com</p>
-					</dd>
-	
-					<dt>
-						<code>&lt;div data-email="me@example.com"&gt;&lt;em&gt;email&lt;/em&gt; me&lt;/div&gt;</code>
-					</dt>
-					<dd>
-						<div data-email="me@example.com"><em>email</em> me</div>
-					</dd>
-		
-					<dt>
-						<code>&lt;img data-email="me@example.com" ... &gt;</code>
-					</dt>
-					<dd>
-						<img data-email="me@example.com" src="/graphics/logo/tsmchughs.png"
-							alt="T.S. McHugh's" width="200" height="68">
-					</dd>
-	
-					<dt><code>&lt;blockquote data-email="me@example.com"&gt;&lt;p&gt;Lorem ipsum dolor sit amet....&lt;/p&gt;&lt;/blockquote&gt;</code></dt>
-					<dd>
-						<blockquote data-email="me@example.com">
-							<p>
-								Lorem ipsum dolor sit amet....
-							</p>
-						</blockquote>
-					</dd>
-	
-				</dl>
-	
-			</section>
+                    <dt>
+                        <code>&lt;span class="email"&gt;me@example.com&lt;/span&gt;</code>
+                    </dt>
+                    <dd>
+                        <span class="email">me@example.com</span>
+                    </dd>
 
-		</section>
+                    <dt>
+                        <code>&lt;p class="email foo"&gt;me@example.com&lt;/p&gt;</code>
+                    </dt>
+                    <dd>
+                        <p class="email foo">me@example.com</p>
+                    </dd>
 
-		<section class="mailToNo">
+                    <dt>
+                        <code>&lt;b itemprop="email"&gt;me@example.com&lt;/b&gt;</code>
+                    </dt>
+                    <dd>
+                        <b itemprop="email">me@example.com</b>
+                    </dd>
 
-			<h1><strong>none</strong> of the elements in this section should be <code>mailto</code> anchors</h1>
+                    <dt>
+                        <div>&lt;span itemprop="email foo"&gt;me@example.com&lt;/span&gt;</div>
+                    </dt>
+                    <dd>
+                        <div itemprop="email foo">me@example.com</div>
+                    </dd>
 
-			<section>
-	
-				<h1>&lt;a&gt; elements</h1>
-	
-				<dl>
-	
-					<dt>
-						<code>&lt;a class="email" href="./"&gt;me@example.com&lt;/a&gt;</code>
-					</dt>
-					<dd>
-						<a class="email" href="./">me@example.com</a>
-					</dd>
+                    <dt>
+                        <code>&lt;em data-email="me@example.com"&gt;email me&lt;/em&gt;</code>
+                    </dt>
+                    <dd>
+                        <em data-email="me@example.com">email me</em>
+                    </dd>
 
-					<dt>
-						<code>&lt;a class="u-email" href="./"&gt;me@example.com&lt;/a&gt;</code>
-					</dt>
-					<dd>
-						<a class="u-email" href="./">me@example.com</a>
-					</dd>
+                </dl>
 
-					<dt>
-						<code>&lt;a itemprop="email" href="./"&gt;me@example.com&lt;/a&gt;</code>
-					</dt>
-					<dd>
-						<a itemprop="email" href="./">me@example.com</a>
-					</dd>
+            </section>
 
-				</dl>
 
-			</section>
+            <section>
 
-			<section>
-	
-				<h1>elements with descendent &lt;a&gt; elements</h1>
-	
-				<dl>
-	
-					<dt>
-						<code>&lt;span class="email"&gt;&lt;a href="./"&gt;me&lt;/a&gt;@example.com&lt;/span&gt;</code>
-					</dt>
-					<dd>
-						<span class="email"><a href="./">me</a>@example.com</span>
-					</dd>
-	
-					<dt>
-						<code>&lt;p itemprop="email"&gt;&lt;a href="./"&gt;me&lt;/a&gt;@example.com&lt;/p&gt;</code>
-					</dt>
-					<dd>
-						<p itemprop="email"><a href="./">me</a>@example.com</p>
-					</dd>
-	
-					<dt>
-						<code>&lt;em data-email="me@example.com"&gt;email &lt;a href="./"&gt;me&lt;/a&gt;&lt;/em&gt;</code>
-					</dt>
-					<dd>
-						<em data-email="me@example.com">email <a href="./">me</a> </em>
-					</dd>
-	
-					<dt>
-						<code>&lt;blockquote data-email="me@example.com"&gt;&lt;p&gt;Lorem &lt;a href="./"&gt;ipsum dolor&lt;/a&gt; sit amet...&lt;/p&gt;&lt;/blockquote&gt;</code>
-					</dt>
-					<dd>
-						<blockquote data-email="me@example.com">
-							<p>
-								Lorem <a href="./">ipsum dolor</a> sit amet....
-							</p>
-						</blockquote>
-					</dd>
+                <h1>elements with descendent elements, but no &lt;a&gt; elements</h1>
 
-				</dl>
+                <dl>
 
-			</section>
+                    <dt>
+                        <code>&lt;span class="email foo"&gt;&lt;i&gt;me&lt;i&gt;@example.com&lt;/span&gt;</code>
+                    </dt>
+                    <dd>
+                        <span class="email foo"><i>me</i>@example.com</span>
+                    </dd>
 
-			<section>
+                    <dt>
+                        <code>&lt;p itemprop="email foo"&gt;&lt;i&gt;me&lt;i&gt;@example.com&lt;/p&gt;</code>
+                    </dt>
+                    <dd>
+                        <p itemprop="email foo"><i>me</i>@example.com</p>
+                    </dd>
 
-				<h1>elements that are descendents of &lt;a&gt; elements</h1>
-	
-				<dl>
-	
-					<dt>
-						<code>&lt;a href="./"&gt;foo &lt;span class="email"&gt;me@example.com&lt;/span&gt;&lt;/a&gt;</code>
-					</dt>
-					<dd>
-						<a href="./">foo <span class="email">me@example.com</span></a>
-					</dd>
-	
-					<dt>
-						<code>&lt;a href="./"&gt;bar &lt;span itemprop="email"&gt;me@example.com&lt;/span&gt;&lt;/a&gt;</code>
-					</dt>
-					<dd>
-						<a href="./">bar <span itemprop="email">me@example.com</span></a>
-					</dd>
-	
-					<dt>
-						<code>&lt;a href="./"&gt;&lt;span data-email="me@example.com"&gt;email me&lt;/span&gt;&lt;/a&gt;</code>
-					</dt>
-					<dd>
-						<a href="./">baz <span data-email="me@example.com">email me</span></a>
-					</dd>
+                    <dt>
+                        <code>&lt;div data-email="me@example.com"&gt;&lt;em&gt;email&lt;/em&gt; me&lt;/div&gt;</code>
+                    </dt>
+                    <dd>
+                        <div data-email="me@example.com"><em>email</em> me</div>
+                    </dd>
 
-					<dt>
-						<code>&lt;a href="./"&gt;&lt;blockquote data-email="me@example.com"&gt;&lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;&lt;/blockquote&gt;&lt;/a&gt;</code>
-					</dt>
-					<dd>
-						<blockquote data-email="me@example.com">
-							<p>
-								<a href="./">Lorem ipsum dolor sit amet....</a>
-							</p>
-						</blockquote>
-					</dd>
+                    <dt>
+                        <code>&lt;img data-email="me@example.com" ... &gt;</code>
+                    </dt>
+                    <dd>
+                        <img data-email="me@example.com" src="/graphics/logo/tsmchughs.png"
+                            alt="T.S. McHugh's" width="200" height="68">
+                    </dd>
 
-					<dt>
-						<code>&lt;a href="./"&gt;&lt;img data-email="me@example.com" ... &gt;&lt;/a&gt;</code>
-					</dt>
-					<dd>
-						<a href="./"><img data-email="me@example.com" src="/graphics/logo/tsmchughs.png"
-							alt="T.S. McHugh's" width="200" height="68"></a>
-					</dd>
+                    <dt><code>&lt;blockquote data-email="me@example.com"&gt;&lt;p&gt;Lorem ipsum dolor sit amet....&lt;/p&gt;&lt;/blockquote&gt;</code></dt>
+                    <dd>
+                        <blockquote data-email="me@example.com">
+                            <p>
+                                Lorem ipsum dolor sit amet....
+                            </p>
+                        </blockquote>
+                    </dd>
 
-				</dl>
+                </dl>
 
-			</section>
+            </section>
 
-		</section>
+        </section>
 
-	</body>
+        <section class="mailToNo">
+
+            <h1><strong>none</strong> of the elements in this section should be <code>mailto</code> anchors</h1>
+
+            <section>
+
+                <h1>&lt;a&gt; elements</h1>
+
+                <dl>
+
+                    <dt>
+                        <code>&lt;a class="email" href="./"&gt;me@example.com&lt;/a&gt;</code>
+                    </dt>
+                    <dd>
+                        <a class="email" href="./">me@example.com</a>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;a class="u-email" href="./"&gt;me@example.com&lt;/a&gt;</code>
+                    </dt>
+                    <dd>
+                        <a class="u-email" href="./">me@example.com</a>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;a itemprop="email" href="./"&gt;me@example.com&lt;/a&gt;</code>
+                    </dt>
+                    <dd>
+                        <a itemprop="email" href="./">me@example.com</a>
+                    </dd>
+
+                </dl>
+
+            </section>
+
+            <section>
+
+                <h1>elements with descendent &lt;a&gt; elements</h1>
+
+                <dl>
+
+                    <dt>
+                        <code>&lt;span class="email"&gt;&lt;a href="./"&gt;me&lt;/a&gt;@example.com&lt;/span&gt;</code>
+                    </dt>
+                    <dd>
+                        <span class="email"><a href="./">me</a>@example.com</span>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;p itemprop="email"&gt;&lt;a href="./"&gt;me&lt;/a&gt;@example.com&lt;/p&gt;</code>
+                    </dt>
+                    <dd>
+                        <p itemprop="email"><a href="./">me</a>@example.com</p>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;em data-email="me@example.com"&gt;email &lt;a href="./"&gt;me&lt;/a&gt;&lt;/em&gt;</code>
+                    </dt>
+                    <dd>
+                        <em data-email="me@example.com">email <a href="./">me</a> </em>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;blockquote data-email="me@example.com"&gt;&lt;p&gt;Lorem &lt;a href="./"&gt;ipsum dolor&lt;/a&gt; sit amet...&lt;/p&gt;&lt;/blockquote&gt;</code>
+                    </dt>
+                    <dd>
+                        <blockquote data-email="me@example.com">
+                            <p>
+                                Lorem <a href="./">ipsum dolor</a> sit amet....
+                            </p>
+                        </blockquote>
+                    </dd>
+
+                </dl>
+
+            </section>
+
+            <section>
+
+                <h1>elements that are descendents of &lt;a&gt; elements</h1>
+
+                <dl>
+
+                    <dt>
+                        <code>&lt;a href="./"&gt;foo &lt;span class="email"&gt;me@example.com&lt;/span&gt;&lt;/a&gt;</code>
+                    </dt>
+                    <dd>
+                        <a href="./">foo <span class="email">me@example.com</span></a>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;a href="./"&gt;bar &lt;span itemprop="email"&gt;me@example.com&lt;/span&gt;&lt;/a&gt;</code>
+                    </dt>
+                    <dd>
+                        <a href="./">bar <span itemprop="email">me@example.com</span></a>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;a href="./"&gt;&lt;span data-email="me@example.com"&gt;email me&lt;/span&gt;&lt;/a&gt;</code>
+                    </dt>
+                    <dd>
+                        <a href="./">baz <span data-email="me@example.com">email me</span></a>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;a href="./"&gt;&lt;blockquote data-email="me@example.com"&gt;&lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;&lt;/blockquote&gt;&lt;/a&gt;</code>
+                    </dt>
+                    <dd>
+                        <blockquote data-email="me@example.com">
+                            <p>
+                                <a href="./">Lorem ipsum dolor sit amet....</a>
+                            </p>
+                        </blockquote>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;a href="./"&gt;&lt;img data-email="me@example.com" ... &gt;&lt;/a&gt;</code>
+                    </dt>
+                    <dd>
+                        <a href="./"><img data-email="me@example.com" src="/graphics/logo/tsmchughs.png"
+                            alt="T.S. McHugh's" width="200" height="68"></a>
+                    </dd>
+
+                </dl>
+
+            </section>
+
+        </section>
+
+    </body>
 
 </html>
