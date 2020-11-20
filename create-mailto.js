@@ -1,7 +1,7 @@
 /*
  * create-mailto.js
  *
- * version 0.2
+ * version 0.3
  *
  * find email addresses in web pages and turn them into clickable <a href=mailto>
  *
@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	$('.email, .u-email, .p-email, [itemprop~=email], [data-email]').not('a, a *, :has(a)').each(function(){
 
 		// get email address, preferring data-email attribute when it's available, text content if not
-		emailAddress = $(this).data('email') || $(this).text();
+        emailAddress = this.dataset.email || this.innerText;
 
 		emailAddress = emailAddress.trim();
 
