@@ -6,6 +6,7 @@
  * find email addresses in web pages and turn them into clickable <a href=mailto>
  */
 
+'use strict'
 
 var emailAddress, mailtoElement, elParent, elementCollection;
 
