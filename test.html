@@ -179,6 +179,38 @@ blockquote > p:after {
 
             <section>
 
+                <h1>elements with exlude class</h1>
+
+                <dl>
+
+                    <dt>
+                        <code>&lt;span class="email exclude-create-mailto"&gt;me@example.com&lt;/span&gt;</code>
+                    </dt>
+                    <dd>
+                        <span class="email exclude-create-mailto">me@example.com</span>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;span class="email foo exclude-create-mailto"&gt;&lt;i&gt;me&lt;i&gt;@example.com&lt;/span&gt;</code>
+                    </dt>
+                    <dd>
+                        <span class="email foo exclude-create-mailto"><i>me</i>@example.com</span>
+                    </dd>
+
+                    <dt>
+                        <code>&lt;img data-email="me@example.com" class="exclude-create-mailto"... &gt;</code>
+                    </dt>
+                    <dd>
+                        <img data-email="me@example.com" class="exclude-create-mailto" src="test.png" alt="test" width="50" height="50">
+                    </dd>
+
+                </dl>
+
+            </section>
+
+
+            <section>
+
                 <h1>elements with descendent &lt;a&gt; elements</h1>
 
                 <dl>

@@ -1,7 +1,7 @@
 /*
  * create-mailto.js
  *
- * version 0.51
+ * version 0.6
  *
  * find email addresses in web pages and turn them into clickable <a href=mailto>
  */
@@ -16,6 +16,8 @@ const interactiveElements = 'a, audio, button, details, input, label, meter, pro
 // container elements that have to handled specially
 const containerElements = 'fieldset, form, iframe, math';
 
+const excludeClass = '.exclude-create-mailto';
+
 window.addEventListener('DOMContentLoaded', () => {
 
     // get elements inside  <body> whose class attribute includes 'email', 'u-email', or 'p-email';
@@ -27,8 +29,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     elementCollection.forEach(function(el) {
 
-        // exclude element if it can't be anchor link
-        if ( el.matches(interactiveElements + ',' + containerElements) ) {
+        // exclude problem elements and elements with special exclude class
+        if ( el.matches(interactiveElements + ',' + containerElements + ',' + excludeClass) ) {
             return;
         }
 	    // exclude element if it has problem descendents
