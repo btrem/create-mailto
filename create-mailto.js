@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	// or whose itemprop attribute includes 'email'; or with a data-email attribute
 
     elementCollection = document
-        .querySelector('body')
+        .getElementsByTagName('body')[0]
         .querySelectorAll('.email, .u-email, .p-email, [itemprop~=email], [data-email]');
 
     elementCollection.forEach(function(el) {
