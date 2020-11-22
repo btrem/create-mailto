@@ -12,10 +12,12 @@ var elementCollection, emailAddress, mailtoElement;
 
 window.addEventListener('DOMContentLoaded', () => {
 
-	// get elements whose class attribute includes 'email', 'u-email', or 'p-email';
-	// or whose itemprop attribute includes 'email'; or with a data-email attribute;
+    // get elements inside  <body> whose class attribute includes 'email', 'u-email', or 'p-email';
+	// or whose itemprop attribute includes 'email'; or with a data-email attribute
 
-    elementCollection = document.querySelectorAll('.email, .u-email, .p-email, [itemprop~=email], [data-email]');
+    elementCollection = document.querySelector('body');
+
+    elementCollection = elementCollection.querySelectorAll('.email, .u-email, .p-email, [itemprop~=email], [data-email]');
 
     elementCollection.forEach(function(el){
 
