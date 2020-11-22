@@ -11,7 +11,7 @@ Then, in the web page, add markup to your email addresses:
 
 `<span class="email">username@example.com</span>`
 
-before create-mailto | after create-mailto
+plain html | html with create-mailto.js
 -------------------- | -------------------
 `<span class="email">username@example.com</span>` | `<span class="email"><a href="mailto:username@example.com">username@example.com</a></span>`
 
@@ -21,7 +21,7 @@ That's it!
 
 If you use [microformats](http://microformats.org/) or [microdata](https://www.w3.org/TR/microdata/), create-mailto will convert email addresses without any additional markup:
 
-markup type | before create-mailto | after create-mailto
+markup type | plain html           | html with create-mailto.js
 ------------|--------------------- | -------------------
 [microformats hCard 1.0](http://microformats.org/wiki/hCard) | `<span class="email">username@example.com</span>` | `<span class="email"><a href="mailto:username@example.com">username@example.com</a></span>`
 [microformats2 hcard](http://microformats.org/wiki/h-card) | `<span class="p-email">username@example.com</span>` | `<span class="p-email"><a href="mailto:username@example.com">username@example.com</a></span>`
@@ -30,7 +30,7 @@ markup type | before create-mailto | after create-mailto
 ## using `data-` attribute
 You can also use this script in situations where the email address does *not* appear in the web page, by using [`data-*` attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes). Just add a `data-email` to your element:
 
-before create-mailto | after create-mailto
+plain html           | html with create-mailto.js
 -------------------- | -------------------
 `<span data-email="username@example.com">email me</span>` | `<span data-email="username@example.com"><a href="mailto:username@example.com">email me</a></span>`
 `<img src="foo.jpg" alt="email me" data-email="username@example.com">` | `<a href="username@example.com"><img src="foo.jpg" alt="email me" data-email="username@example.com"></a>`
@@ -39,8 +39,8 @@ before create-mailto | after create-mailto
 create-mailto will not change any part of a document's `<head>` element. There are also restrictions on
 interactive and form elements. For example, it will not add `<a>` markup inside a `<label>` element, since clicking a `<label>` element should not cause a new page to load, but rather put focus on the form element associated with that `<label>`. The list below is not exhaustive:
 
-before create-mailto | after create-mailto (no markup changes)
--------------------- | ---------------------------------------
+plain html           | html with create-mailto.js (no markup changes)
+-------------------- | ----------------------------------------------
 `<label class="email">username@example.com<label>` | `<label class="email">username@example.com<label>`
 `<label><span class="email">username@example.com</span><label>` | `<label><span class="email">username@example.com</span><label>`
 `<input class="email">username@example.com<input>` | `<input class="email">username@example.com<input>`
