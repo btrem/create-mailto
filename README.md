@@ -35,3 +35,17 @@ before create-mailto | after create-mailto
 `<span data-email="username@example.com">email me</span>` | `<span data-email="username@example.com"><a href="mailto:username@example.com">email me</a></span>`
 `<img src="foo.jpg" alt="email me" data-email="username@example.com">` | `<a href="username@example.com"><img src="foo.jpg" alt="email me" data-email="username@example.com"></a>`
 
+## automatically excluded elements
+create-mailto will not change any part of a document's `<head>` element. There are also restrictions on
+interactive and form elements. For example, it will not add `<a>` markup inside a `<label>` element, since clicking a `<label>` element should not cause a new page to load, but rather put focus on the form element associated with that `<label>`. The list below is not exhaustive:
+
+before create-mailto | after create-mailto (no markup changes)
+-------------------- | ---------------------------------------
+`<label class="email">username@example.com<label>` | `<label class="email">username@example.com<label>`
+`<label><span class="email">username@example.com</span><label>` | `<label><span class="email">username@example.com</span><label>`
+`<input class="email">username@example.com<input>` | `<input class="email">username@example.com<input>`
+`<textarea class="email">username@example.com<textarea>` | `<textarea class="email">username@example.com<textarea>`
+`<details class="email">username@example.com<details>` | `<details class="email">username@example.com<details>`
+`<audio class="email" controls src="foo.ogg"></audio>` | `<audio class="email" controls src="foo.ogg"></audio>`
+`<button class="email">username@example.com<button>` | `<button class="email">username@example.com<button>`
+`<input class="email">username@example.com<input>` |
