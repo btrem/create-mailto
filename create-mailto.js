@@ -8,7 +8,7 @@
 
 'use strict'
 
-var emailAddress, mailtoElement, elParent, elementCollection;
+var elementCollection, emailAddress, mailtoElement;
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -33,13 +33,12 @@ window.addEventListener('DOMContentLoaded', () => {
 		// validate email address
 		if (/^[^@]+@[^@.]+\.[^@]*\w\w$/.test(emailAddress)) {
 
-			// create <a> element with mailto: set to validated email address
+			// create empty <a> element with mailto: set to validated email address
 			mailtoElement = document.createElement('a');
             mailtoElement.setAttribute('href', 'mailto:' + emailAddress);
 
-            // insert new <a> element in dom before target element
-            elParent = el.parentNode;
-            elParent.insertBefore(mailtoElement, el);
+            // insert new empty <a> element in dom before target element
+            el.parentElement.insertBefore(mailtoElement, el);
 
 			// if target element is <img>, it is void; move <img> inside <a>
 			if(el.tagName.toLowerCase() == 'img') {
