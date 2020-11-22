@@ -56,3 +56,6 @@ If you are using a create-mailto class for some other reason e.g., you use `<spa
 plain html           | html with create-mailto.js (no markup changes)
 -------------------- | -------------------
 `<span class="email exclude-create-mailto">username@example.com</span>` | `<span class="email exclude-create-mailto">username@example.com</span>`
+
+## legacy broswer support
+The script create-mailto.js uses [modern javascript features](http://es6-features.org/). It should work with recent releases of all major browsers. If you need to support legacy browsers (e.g. Internet Explorer), then try the jQuery version create-mailto.jquery.js. You will need to include [jQuery](http://code.jquery.com/) in your web page.
