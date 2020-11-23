@@ -12,10 +12,10 @@ var elementCollection, emailAddress, mailtoElement;
 
 // elements that have to be handled specially
 const specialElements =
-    'a, audio, br, button, canvas, col, details, embed, hr, input, label, map, meter, object, param, progress, select, source, textarea, video';
+    'a, audio, br, button, canvas, col, details, embed, hr, input, label, map, math, meter, object, param, progress, select, source, textarea, video';
 
 // container elements that have to handled specially
-const containerElements = 'fieldset, form, iframe, math';
+const containerElements = 'fieldset, form, iframe';
 
 const excludeClass = '.exclude-create-mailto';
 
