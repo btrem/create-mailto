@@ -10,8 +10,9 @@
 
 var elementCollection, emailAddress, mailtoElement;
 
-// interactive elements that have to be handled specially
-const interactiveElements = 'a, audio, button, details, input, label, meter, progress, select, textarea, video';
+// elements that have to be handled specially
+const specialElements =
+    'a, audio, br, button, canvas, col, details, embed, hr, input, label, map, meter, object, param, progress, select, source, textarea, video';
 
 // container elements that have to handled specially
 const containerElements = 'fieldset, form, iframe, math';
@@ -30,15 +31,15 @@ window.addEventListener('DOMContentLoaded', () => {
     elementCollection.forEach(function(el) {
 
         // exclude problem elements and elements with special exclude class
-        if ( el.matches(interactiveElements + ',' + containerElements + ',' + excludeClass) ) {
+        if ( el.matches(specialElements + ',' + containerElements + ',' + excludeClass) ) {
             return;
         }
 	    // exclude element if it has problem descendents
-        if ( el.querySelector(interactiveElements + ',' + containerElements)  ) {
+        if ( el.querySelector(specialElements + ',' + containerElements)  ) {
             return;
         }
 	    // exclude element if it has problem ancestors
-        if ( el.closest(interactiveElements) ) {
+        if ( el.closest(specialElements) ) {
             return;
         }
 
