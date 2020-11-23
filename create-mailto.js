@@ -20,7 +20,7 @@ const excludeClass = '.exclude-create-mailto';
 
 window.addEventListener('DOMContentLoaded', () => {
 
-    // get elements inside  <body> whose class attribute includes 'email', 'u-email', or 'p-email';
+    // get elements inside <body> whose class attribute includes 'email', 'u-email', or 'p-email';
 	// or whose itemprop attribute includes 'email'; or with a data-email attribute
 
     elementCollection = document
@@ -54,18 +54,19 @@ window.addEventListener('DOMContentLoaded', () => {
 			mailtoElement = document.createElement('a');
             mailtoElement.setAttribute('href', 'mailto:' + emailAddress);
 
-            // insert new empty <a> element in dom before target element
-            el.parentElement.insertBefore(mailtoElement, el);
-
 			// if target element is <img>, it is void; move <img> inside <a>
-			if(el.tagName.toLowerCase() == 'img') {
+			if (el.tagName.toLowerCase() == 'img') {
+                // insert new empty <a> element into dom after target img element
+                el.insertAdjacentElement('afterend', mailtoElement);
+                // move target img element inside <a>
                 mailtoElement.append(el);
 			}
-			// not void; move _contents_ of target element inside <a>, then move <a> inside taget element
             else {
+                // move contents of target element in DOM to inside of mailtoElement which is not yet in DOM
                 while (el.firstChild) {
                     mailtoElement.appendChild(el.firstChild);
                 }
+			    // append mailtoElement to target element, which places it in DOM
                 el.append(mailtoElement);
             }
 
