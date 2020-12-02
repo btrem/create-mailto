@@ -30,15 +30,15 @@ const outerWrapElements = 'img, picture';
 const excludeClass = '.exclude-create-mailto';
 
 function canBeMailto(elmt) {
-
+    // don't make element into a link if it can't be a link
     if ( elmt.matches(excludeSelector + ',' + excludeSelectorUnlessContainer + ',' + excludeClass ) ) {
         return false;
     }
-    // exclude element if it has descendent that a link can't contain
+    // don't make element a link if it has descendent that a link can't contain
     if ( elmt.querySelector(excludeSelector + ',' + excludeSelectorUnlessContainer)  ) {
         return false;
     }
-    // exclude element if it has ancestor that can't contain links
+    // don't make element a link if it has ancestor that can't contain links
     if ( elmt.closest(excludeSelector) ) {
         return false;
     }
