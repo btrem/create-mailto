@@ -1,0 +1,40 @@
+section {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.mailToYes {
+    border: 2px solid #2c2;
+    margin-bottom: 2em;
+}
+
+.mailToNo {
+    border: 2px dashed #f55;
+    color: black;
+    background-color: #eee;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+blockquote > p:before {
+    content: open-quote;
+}
+
+blockquote > p:after {
+    content: close-quote;
+}
+
+a[href^="mailto"] {
+    color: #2c2;
+    outline: 1px dotted;
+}
+
+a:link > img {
+    border: 1px solid blue;
+}
+
+a:link[href^="mailto"] > img {
+    border: 1px solid #2c2;
+}
