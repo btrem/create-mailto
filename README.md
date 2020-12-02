@@ -36,10 +36,7 @@ plain html           | html with create-mailto.js
 `<img src="foo.jpg" alt="email me" data-email="username@example.com">` | `<a href="username@example.com"><img src="foo.jpg" alt="email me" data-email="username@example.com"></a>`
 
 ## automatically excluded elements
-create-mailto will not change any part of a document's `<head>` element. There are also restrictions on
-interactive and form elements. For example, it will not add `<a>` markup inside a `<label>` element, since clicking a `<label>` element changes focus to the associated form input. It should not have additional effects, e.g., opening a compose email window, because that would likely be unexpected behavior. Finally, it will ignore void elements like `<col>` and `<br>`.
-
-The list below is not exhaustive:
+create-mailto will not change any part of a document's `<head>` element. There are also restrictions on interactive and form elements. For example, it will not add `<a>` markup inside a `<label>` element, since clicking a `<label>` element changes focus to the associated form input. It should not have additional effects, e.g., opening a compose email window, because such behavior would likely be unexpected. In addition, create-mailto will ignore void elements like `<col>` and `<br>`. The list below is not exhaustive:
 
 plain html           | html with create-mailto.js (no markup changes)
 -------------------- | ----------------------------------------------
@@ -52,7 +49,7 @@ plain html           | html with create-mailto.js (no markup changes)
 `<button class="email">username@example.com<button>` | `<button class="email">username@example.com<button>`
 
 ## choosing to exclude elements
-If you are using a create-mailto class for some other reason e.g., you use `<span class="email">username@example</span>` in your markup, but you don't want that instance turned into a link, you can exclude it by adding `exclude-create-mailto` as an addiontal class name.
+If you are using a create-mailto class for some other reason e.g., you use `<span class="email">username@example</span>` in your markup, but you don't want that instance turned into a link, you can exclude it by adding `exclude-create-mailto` as an additional class name.
 
 plain html           | html with create-mailto.js (no markup changes)
 -------------------- | -------------------
