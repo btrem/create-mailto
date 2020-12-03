@@ -26,6 +26,11 @@ blockquote > p:after {
     content: close-quote;
 }
 
+svg {
+    height: 14em;
+    width: auto;
+}
+
 a[href^="mailto"] {
     color: #2c2;
     outline: 1px dotted;
@@ -37,4 +42,12 @@ a:link > img {
 
 a:link[href^="mailto"] > img {
     border: 1px solid #2c2;
+}
+
+a:link > circle {
+    fill: blue;
+}
+
+a:link[href^="mailto"] > circle {
+    fill: #2c2;
 }
