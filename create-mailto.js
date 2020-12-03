@@ -60,17 +60,27 @@ window.addEventListener('DOMContentLoaded', () => {
 
     elementArrayFiltered.forEach(function(el) {
 
-        // get email address from data-email attribute (preferred) or text content
-		emailAddress = el.dataset.email || el.innerText;
+        // get email address from data-email attribute (preferred) or text content;
+        // for text content, use HTML-only innerText first, since this ignores HTML comments;
+        // then use textContent which works with SVG; if those fail, set to empty
+        // string to avoid fatal error caused by using trim() on null
+		emailAddress = el.dataset.email || el.innerText || el.textContent || "";
 
 		emailAddress = emailAddress.trim();
 
 		// validate email address
 		if (/^[^@]+@[^@.]+\.[^@]*\w\w$/.test(emailAddress)) {
 
-			// create empty <a> element with mailto: set to validated email address
-			mailtoElement = document.createElement('a');
-            mailtoElement.setAttribute('href', 'mailto:' + emailAddress);
+			// create <a> element
+            if ( el.closest('svg') ) {
+                mailtoElement = document.createElementNS('http://www.w3.org/2000/svg','a');
+            }
+            else {
+                mailtoElement = document.createElement('a');
+            }
+
+			// set mailto: attribute to validated email address; use setAttributeNS in case el is <svg>
+            mailtoElement.setAttributeNS(null, 'href', 'mailto:' + emailAddress);
 
             // check if element can't contain link
             if ( el.matches(outerWrapElements ) ) {
