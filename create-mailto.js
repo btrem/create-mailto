@@ -1,7 +1,7 @@
 /*
  * create-mailto.js
  *
- * version 0.7
+ * version 0.8
  *
  * find email addresses in web pages and turn them into clickable <a href=mailto>
  */
@@ -39,7 +39,7 @@ function canBeMailto(elmt) {
         return false;
     }
     // don't make element a link if it has ancestor that can't contain links
-    if ( elmt.closest(excludeSelector) ) {
+    if ( elmt.closest(excludeSelector + ',' + excludeClass) ) {
         return false;
     }
 
