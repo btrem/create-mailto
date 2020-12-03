@@ -9,7 +9,7 @@ section {
 }
 
 .mailToNo {
-    border: 2px dashed #f55;
+    border: 2px dashed blue;
     color: black;
     background-color: #eee;
 }
@@ -31,23 +31,43 @@ svg {
     width: auto;
 }
 
+
+
 a[href^="mailto"] {
-    color: #2c2;
     outline: 1px dotted;
 }
 
-a:link > img {
-    border: 1px solid blue;
+.mailToYes a[href^="mailto"] {
+    color: #2c2;
 }
 
-a:link[href^="mailto"] > img {
-    border: 1px solid #2c2;
+.mailToNo a[href^="mailto"] {
+    color: #e22;
 }
 
 a:link > circle {
     fill: blue;
 }
 
-a:link[href^="mailto"] > circle {
+.mailToYes a:link[href^="mailto"] > circle {
     fill: #2c2;
 }
+
+.mailToNo a:link[href^="mailto"] > circle {
+    fill: #e22;
+}
+
+
+a:link > img {
+    border: 1px solid;
+}
+
+.mailToYes a:link[href^="mailto"] > img {
+    border-color: #2c2;
+}
+
+.mailToNo a:link[href^="mailto"] > img {
+    border-color: #e22;
+}
+
+/* TODO use css variables */
