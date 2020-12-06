@@ -26,12 +26,12 @@ const excludeSelectorUnlessContainer = 'fieldset, form, iframe';
 // some elements can't contain links (<img> is void, and <picture> can't contain <a>); they must be wrapped
 const outerWrapElements = 'img, picture';
 
-// class to allow authors to exclude elements from create-mailto processing
-const excludeClass = '.exclude-create-mailto';
+// class that create-mailto.js will ignore
+const ignoreClass = '.ignore-create-mailto';
 
 function canBeMailto(elmt) {
     // don't make element into a link if it can't be a link
-    if ( elmt.matches(excludeSelector + ',' + excludeSelectorUnlessContainer + ',' + excludeClass ) ) {
+    if ( elmt.matches(excludeSelector + ',' + excludeSelectorUnlessContainer + ',' + ignoreClass ) ) {
         return false;
     }
     // don't make element a link if it has descendent that a link can't contain
@@ -39,7 +39,7 @@ function canBeMailto(elmt) {
         return false;
     }
     // don't make element a link if it has ancestor that can't contain links
-    if ( elmt.closest(excludeSelector + ',' + excludeClass) ) {
+    if ( elmt.closest(excludeSelector + ',' + ignoreClass) ) {
         return false;
     }
 

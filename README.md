@@ -48,8 +48,8 @@ plain html           | html with create-mailto.js (no markup changes)
 `<audio data-email="username@example.com" controls src="foo.ogg"></audio>` | `<audio data-email="username@example.com" controls src="foo.ogg"></audio>`
 `<button class="email">username@example.com<button>` | `<button class="email">username@example.com<button>`
 
-## choosing to exclude elements
-If you are using a create-mailto class for some other reason e.g., you use `<span class="email">username@example</span>` in your markup, but you don't want that instance turned into a link, you can exclude it by adding `exclude-create-mailto` as an additional class name. This will work on an element and any of its children.
+## tell create-mailto.js to ignore elements
+If you are using a create-mailto class for some other reason e.g., you use `<span class="email">username@example</span>` in your markup, but you don't want that instance turned into a link, you can add `ignore-create-mailto` to its class attribute. This will work on an element and any of its children.
 
 plain html           | html with create-mailto.js (no markup changes)
 -------------------- | -------------------
