@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>create-mailto.js exclude test</title>
+
+        <script defer src="../create-mailto.js"></script>
+
+        <script defer src="test-nope.js"></script>
+
+        <link rel="stylesheet" href="../assets/css/test.css">
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <h1>create-mailto.js exclude test</h1>
+
+            <p>
+                <label class="errors">
+                    errors:
+                    <output>unknown</output>
+                </label>
+                <label class="result">
+                    test result:
+                    <output>unknown</output>
+                </label>
+            </p>
+
+        </header>
+
+        <main>
+
+            <p>
+                This page tests create-mailto.js on different
+                <abbr title="hypertext markup language">HTML</abbr>
+                fragments. The table below contains one example per row.
+                The first column shows a code fragment that should not,
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">
+                    according the rules of anchor links in
+                    <abbr title="hypertext markup language">HTML</abbr>
+                </a>
+                be modified to add a <code>mailto:</code> link.
+                The second column shows your browser's rendering of that
+                fragment after create-mailto.js has processed the document.
+            </p>
+
+            <p>
+                The test passes if table contains <em>no</em>
+                <code>&lt;a href="mailto:"&gt;</code> links.
+            </p>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>
+                            <abbr title="hypertext markup language">HTML</abbr>
+                        </th>
+                        <th>
+                            output
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody class="mailtoNope">
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    a element
+                                </figcaption>
+                                <code>
+                                    &lt;a class="email"
+                                    href="./"&gt;username@example.com&lt;/a&gt;
+                                </code>
+                            </figure>
+
+                        </td>
+                        <td>
+                            <a class="email" href="./">username@example.com</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    a element
+                                </figcaption>
+                                <code>
+                                    &lt;a class="u-email"
+                                    href="./"&gt;username@example.com&lt;/a&gt;
+                                </code>
+                            </figure>
+
+                        </td>
+                        <td>
+                            <a class="u-email" href="./">username@example.com</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    a element
+                                </figcaption>
+                                <code>
+                                    &lt;a itemprop="email"
+                                    href="./"&gt;username@example.com&lt;/a&gt;
+                                </code>
+                            </figure>
+                        </td>
+                        <td>
+                            <a itemprop="email" href="./">username@example.com</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline element with child a element
+                                </figcaption>
+                                <code>
+                                    &lt;span class="email"&gt;&lt;a
+                                    href="./"&gt;username&lt;/a&gt;@example.com&lt;/span&gt;
+                                </code>
+                            </figure>
+
+                        </td>
+                        <td>
+                            <span class="email"><a href="./">username</a>@example.com</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    block element with child a element
+                                </figcaption>
+                                <code>
+                                    &lt;p itemprop="email"&gt;&lt;a
+                                    href="./"&gt;username&lt;/a&gt;@example.com&lt;/p&gt;
+                                </code>
+                            </figure>
+
+                            </td>
+                            <td>
+                                <p itemprop="email"><a href="./">username</a>@example.com</p>
+                            </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline element with child a element
+                                </figcaption>
+                                <code>
+                                    &lt;em
+                                    data-email="username@example.com"&gt;email
+                                    &lt;a href="./"&gt;me&lt;/a&gt;&lt;/em&gt;
+                                </code>
+                            </figure>
+
+                        </td>
+                        <td>
+                            <em data-email="username@example.com">email <a
+                                    href="./">me</a> </em>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    block element with child a element
+                                </figcaption>
+                                <pre>
+                                    <code>
+&lt;blockquote data-email="username@example.com"&gt;
+    &lt;p&gt;
+        Lorem
+            &lt;a href="./"&gt;ipsum dolor&lt;/a&gt;
+            sit amet...
+    &lt;/p&gt;
+&lt;/blockquote&gt;
+                                </code>
+                            </pre>
+                        </figure>
+
+                        </td>
+                        <td>
+                            <blockquote data-email="username@example.com">
+                                <p>
+                                    Lorem <a href="./">ipsum dolor</a> sit
+                                    amet....
+                                </p>
+                            </blockquote>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline element with ancestor a element
+                                </figcaption>
+                                <code>
+                                    &lt;a href="./"&gt;foo &lt;span
+                                    class="email"&gt;username@example.com&lt;/span&gt;&lt;/a&gt;
+                                </code>
+                            </figure>
+                            </td>
+                            <td>
+                                <a href="./">foo <span class="email">username@example.com</span></a>
+                            </td>
+                        </tr>
+
+                    <tr>
+
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline element with ancestor a element
+                                </figcaption>
+                                <pre>
+                                    <code>
+&lt;a href="./"&gt;
+    bar &lt;span itemprop="email"&gt;username@example.com&lt;/span&gt;
+&lt;/a&gt;
+                                    </code>
+                                </pre>
+                            </figure>
+
+                            </td>
+                            <td>
+                                <a href="./">bar <span itemprop="email">username@example.com</span></a>
+                            </td>
+                        </tr>
+
+                    <tr>
+
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline element with ancestor a element
+                                </figcaption>
+                                <pre>
+                                    <code>
+&lt;a href="./"&gt;
+    &lt;span data-email="username@example.com"&gt;email me&lt;/span&gt;
+&lt;/a&gt;
+                                </code>
+                            </pre>
+                        </figure>
+
+                        </td>
+                        <td>
+                            <a href="./">baz <span
+                                    data-email="username@example.com">email
+                                    me</span></a>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                    <td>
+                        <figure>
+                            <figcaption>
+                                block element with ancestor a element
+                            </figcaption>
+                            <pre>
+                                <code>
+&lt;a href="./"&gt;
+    &lt;blockquote data-email="username@example.com"&gt;
+        &lt;p&gt;
+            Lorem ipsum dolor sit amet
+        &lt;/p&gt;
+    &lt;/blockquote&gt;
+&lt;/a&gt;
+                            </code>
+                            </pre>
+                        </figure>
+
+                        </td>
+                        <td>
+                            <blockquote data-email="username@example.com">
+                                <p>
+                                    <a href="./">Lorem ipsum dolor sit amet</a>
+                                </p>
+                            </blockquote>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    image element with data-email attribute
+                                    and parent a element
+                                </figcaption>
+                                <code>
+                                    &lt;a href="./"&gt;&lt;img
+                                    data-email="username@example.com" ...
+                                    &gt;&lt;/a&gt;
+                                </code>
+                            </figure>
+
+                        </td>
+                        <td>
+                            <a href="./">
+                                <img
+                                    data-email="username@example.com"
+                                    src="demo.png" alt="test"
+                                    width="300" height="300">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    svg element with class name email
+                                    and a element as parent of email address
+                                </figcaption>
+                                <pre>
+                                    <code>
+&lt;svg class="email"&gt;
+    &lt;a href="./"&gt;
+        &lt;circle/&gt;
+        &lt;text&gt;username@example.com&lt;/text&gt;
+    &lt;/a&gt;
+&lt;/svg&gt;
+                                    </code>
+                            </pre>
+                        </figure>
+                    </td>
+                    <td>
+                        <svg class="email" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <a href="./">
+                                <circle r="240" cx="256" cy="256" />
+                                    <text font-size="46" fill="#fff"
+                                        x="50%" y="50%"
+                                        text-anchor="middle"
+                                        dominant-baseline="middle">
+                                        username@example.com
+                                    </text>
+                                </a>
+                            </svg>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </main>
+
+        <footer>
+
+			<address class="h-card">
+
+				<p>
+					<a class="p-name u-url" href="https://github.com/btrem">Brian Tremblay</a>
+				</p>
+
+			</address>
+
+        </footer>
+
+    </body>
+
+</html>

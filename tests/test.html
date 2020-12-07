@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>create-mailto.js test</title>
+
+        <script defer src="../create-mailto.js"></script>
+
+        <script defer src="test-yep.js"></script>
+
+        <link rel="stylesheet" href="../assets/css/test.css">
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <h1>create-mailto.js test</h1>
+
+            <p>
+                <label class="errors">
+                    errors:
+                    <output>unknown</output>
+                </label>
+                <label class="result">
+                    test result:
+                    <output>unknown</output>
+                </label>
+            </p>
+
+        </header>
+
+        <main>
+
+            <p>
+                This page tests create-mailto.js on different
+                <abbr title="hypertext markup language">HTML</abbr>
+                fragments. The table below contains one example per row.
+                The first column shows a code fragment that can be modified
+                to include a <code>mailto:</code> link. The second
+                shows your browser's rendering of that fragment after
+                being processed by create-mailto.js.
+            </p>
+
+            <p>
+                The test passes if the number of rows in the table is
+                equal to the number of
+                <code>&lt;a href="mailto:"&gt;</code> links.
+            </p>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>
+                            <abbr title="hypertext markup language">HTML</abbr> code fragment
+                        </th>
+                        <th>
+                            browser rendering
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody class="mailtoYep">
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline element with single class name and one child text node
+                                </figcaption>
+                                <code>
+                                    &lt;span class="email"&gt;username@example.com&lt;/span&gt;
+                                </code>
+                            </figure>
+                        </td>
+                        <td>
+                            <span class="email">username@example.com</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    block element with two class names and one child text node
+                                </figcaption>
+                                <code>
+                                    &lt;p class="email foo"&gt;username@example.com&lt;/p&gt;
+                                </code>
+                            </figure>
+                        </td>
+                        <td>
+                            <p class="email foo">username@example.com</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline element with itemprop attribute
+                                </figcaption>
+                                <code>
+                                    &lt;b itemprop="email"&gt;username@example.com&lt;/b&gt;
+                                </code>
+                            </figure>
+                        </td>
+                        <td>
+                            <b itemprop="email">username@example.com</b>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline element with itemprop attribute
+                                </figcaption>
+                                <code>
+                                    &lt;span itemprop="email foo"&gt;username@example.com&lt;/span&gt;
+                                </code>
+                            </figure>
+                        </td>
+                        <td>
+                            <span itemprop="email foo">username@example.com</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline element with data-email attribute
+                                </figcaption>
+                                <code>
+                                    &lt;em
+                                    data-email="username@example.com"&gt;email
+                                    me&lt;/em&gt;
+                                </code>
+                            </figure>
+                        </td>
+                        <td>
+                            <em data-email="username@example.com">email me</em>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline elements with 2 class names
+                                </figcaption>
+                                <code>
+                                    &lt;span class="email
+                                    foo"&gt;&lt;i&gt;username&lt;/i&gt;@example.com&lt;/span&gt;
+                                </code>
+                            </figure>
+                        </td>
+                        <td>
+                            <span class="email foo"><i>username</i>@example.com</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    block element with itemprop attribute and a child inline element
+                                </figcaption>
+                                <code>
+                                    &lt;p itemprop="email
+                                    foo"&gt;&lt;i&gt;username&lt;/i&gt;@example.com&lt;/p&gt;
+                                </code>
+                            </figure>
+
+                        </td>
+                        <td>
+                            <p itemprop="email foo"><i>username</i>@example.com</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    block element with data-email attribute and a child inline element
+                                </figcaption>
+                                <code>
+<pre>&lt;div data-email="username@example.com"&gt;
+    &lt;em&gt;email&lt;/em&gt; me
+&lt;/div&gt;</pre>
+                                </code>
+                            </figure>
+
+                        </td>
+                        <td>
+                            <div data-email="username@example.com"><em>email</em> me</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    image with data-email attribute
+                                </figcaption>
+                                <code>
+                                    &lt;img data-email="username@example.com" ... &gt;
+                                </code>
+                            </figure>
+                        </td>
+                        <td>
+                            <img data-email="username@example.com"
+                                src="demo.png" alt="test" width="300" height="300">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    blockquote with data-email attribute and child paragraph element
+                                </figcaption>
+                                <code>
+<pre>&lt;blockquote data-email="username@example.com"&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet....&lt;/p&gt;
+&lt;/blockquote&gt;</pre>
+                                </code>
+                            </figure>
+                        </td>
+                        <td>
+                            <blockquote data-email="username@example.com">
+                                <p>
+                                    Lorem ipsum dolor sit amet....
+                                </p>
+                            </blockquote>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    svg element with class attribute
+                                </figcaption>
+                                <code>
+<pre>&lt;svg class="email"&gt;
+    &lt;circle/&gt;
+    &lt;text&gt;username@example.com&lt;/text&gt;
+&lt;/svg&gt;</pre>
+                                </code>
+                            </figure>
+                        </td>
+                        <td>
+                            <svg class="email"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0
+                                512 512">
+                                <circle r="240" cx="256" cy="256" />
+                                <text font-size="46" fill="#fff" x="50%"
+                                    y="50%" text-anchor="middle"
+                                    dominant-baseline="middle">
+                                        username@example.com
+                                </text>
+                            </svg>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </main>
+
+        <footer>
+
+			<address class="h-card">
+
+				<p>
+					<a class="p-name u-url" href="https://github.com/btrem">Brian Tremblay</a>
+				</p>
+
+			</address>
+
+        </footer>
+
+    </body>
+
+</html>
