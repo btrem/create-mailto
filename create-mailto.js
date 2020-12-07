@@ -23,11 +23,11 @@ const excludeSelector = 'a, audio, br, button, canvas, col, details, embed, ' +
 // query selector for elements that can't be links nor be inside links, but can contain links
 const excludeSelectorUnlessContainer = 'fieldset, form, iframe';
 
-// some elements can't contain links (<img> is void, and <picture> can't contain <a>); they must be wrapped
-const outerWrapElements = 'img, picture';
-
 // class that create-mailto.js will ignore
 const ignoreClass = '.ignore-create-mailto';
+
+// some elements can't contain links (<img> is void, and <picture> can't contain <a>); they must be wrapped
+const outerWrapElements = 'img, picture';
 
 function canBeMailto(elmt) {
     // don't make element into a link if it can't be a link
