@@ -8,7 +8,7 @@
 
 'use strict'
 
-var elementCollection, elementArray, elementArrayFiltered, emailAddress, mailtoElement;
+var elmts, emailAddress, mailtoElement;
 
 // query selector for mailto elements: class attribute includes 'email',
 // 'u-email', or 'p-email'; or itemprop attribute includes 'email';
@@ -49,16 +49,20 @@ function canBeMailto(elmt) {
 
 window.addEventListener('DOMContentLoaded', () => {
 
-    // get elements inside <body> whose class attribute includes 'email', 'u-email', or 'p-email';
-	// or whose itemprop attribute includes 'email'; or with a data-email attribute
+    // get element collection from <body> based on mailto selector list;
+    // convert to array, and filter
+    elmts = document.getElementsByTagName('body')[0].querySelectorAll(mailtoSelector);
+    elmts = Array.from(elmts);
+    elmts = elmts.filter(canBeMailto);
 
-    elementCollection = document.getElementsByTagName('body')[0].querySelectorAll(mailtoSelector);
+    // loop through filtered array to
+    elmts.forEach(function(el) {
 
-    elementArray = Array.from(elementCollection);
+        // get email address from data-email attribute if it exists;
+        // or from HTML-only innerText, ignores HTML comments and <style> elements
+        // then use textContent which works with SVG
+		emailAddress = el.dataset.email || el.innerText || el.textContent;
 
-    elementArrayFiltered = elementArray.filter(canBeMailto);
-
-    elementArrayFiltered.forEach(function(el) {
 
         // get email address from data-email attribute (preferred) or text content;
         // for text content, use HTML-only innerText first, since this ignores HTML comments;
