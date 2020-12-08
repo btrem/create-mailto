@@ -4,8 +4,10 @@
 window.addEventListener('DOMContentLoaded', () => {
 
     // output elements show test results
-    const errorsOutput = document.querySelector('.errors > output');
-    const resultOutput = document.querySelector('.result > output');
+    const results = document.querySelector('p.results');
+    const testsCount = document.querySelector('output.testsCount');
+    const errorsCount = document.querySelector('output.errorsCount');
+    const passFail = document.querySelector('output.passFail');
 
     let errors = 0;
     // there should be one mailto: link for each row in the table body
@@ -16,8 +18,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    errorsOutput.value = errors;
-    resultOutput.value = (errors) ? 'failed' : 'passed';
-    resultOutput.parentElement.parentElement.className = (errors) ? 'failed' : 'passed';
+    testsCount.value = rows.length;
+    errorsCount.value = errors;
+    passFail.value = (errors) ? 'failed' : 'passed';
+    results.className = (errors) ? 'failed' : 'passed';
 
 }); // end wrapper DOMContentLoaded function
