@@ -16,9 +16,9 @@ var elmts, emailAddress, mailtoElement;
 const mailtoSelector = '.email, .u-email, .p-email, [itemprop~=email], [data-email]';
 
 // query selector for elements that can't be links, nor be inside links, nor contain links
-const excludeSelector = 'a, audio, br, button, canvas, col, details, embed, ' +
-                        'hr, input, label, map, math, meter, object, param, ' +
-                        'progress, select, source, textarea, video';
+const excludeSelector = 'a, audio, br, button, canvas, col, details, embed, hr,' +
+                        'input, label, map, math, meter, object, param, progress,' +
+                        'script, select, source, style, textarea, video';
 
 // query selector for elements that can't be links nor be inside links, but can contain links
 const excludeSelectorUnlessContainer = 'fieldset, form, iframe';
