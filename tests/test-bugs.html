@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>create-mailto.js bugs</title>
+
+        <script defer src="../create-mailto.js"></script>
+
+        <script defer src="test-yep.js"></script>
+
+        <link rel="stylesheet" href="../assets/css/test.css">
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <h1>create-mailto.js bugs</h1>
+
+            <p class="results">
+                <label>
+                    tests
+                    <output class="testsCount">not summed</output>
+                </label>
+                <label>
+                    errors:
+                    <output class="errorsCount">unknown</output>
+                </label>
+                <label>
+                    result:
+                    <output class="passFail">unknown</output>
+                </label>
+            </p>
+
+        </header>
+
+        <main>
+
+            <p>
+                This page shows known bugs, weaknesses, and problems with
+                create-mailto.js.
+                The table below contains one example per row.
+                The first column shows an
+                <abbr title="hypertext markup language">HTML</abbr>
+                code fragment. The second shows your browser's rendering of
+                that fragment after being processed by create-mailto.js.
+            </p>
+
+            <p>
+                The test passes if each row in the table contains one
+                <code>&lt;a href="mailto:"&gt;</code> link.
+            </p>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>
+                            <abbr title="hypertext markup language">HTML</abbr> code fragment
+                        </th>
+                        <th>
+                            browser rendering
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody class="mailtoYep">
+
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>
+                                    inline element with child &lt;style&gt; element and text node
+                                </figcaption>
+                                <code>
+                                    <pre>
+&lt;span class="email"&gt;
+    &lt;style&gt;foo::after {content: '@foo@'}&lt;/style&gt;
+    username@example.com
+&lt;/span&gt;
+                                    </pre>
+                                </code>
+                            </figure>
+                            <p>
+                                The contents of the &lt;style&gt; element are included
+                                in the node's innerText property, which causes the email
+                                address validation to fail.
+                            </p>
+                        </td>
+                        <td>
+                            <span class="email">
+                                <style>foo::after {content: '@foo@'}</style>
+                                username@example.com
+                            </span>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </main>
+
+        <footer>
+
+			<address class="h-card">
+
+				<p>
+					<a class="p-name u-url" href="https://github.com/btrem">Brian Tremblay</a>
+				</p>
+
+			</address>
+
+        </footer>
+
+    </body>
+
+</html>
