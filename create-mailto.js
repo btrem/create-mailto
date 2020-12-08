@@ -50,32 +50,25 @@ function canBeMailto(elmt) {
 window.addEventListener('DOMContentLoaded', () => {
 
     // get element collection from <body> based on mailto selector list;
-    // convert to array, and filter
+    // convert to array; filter excluded elements from array
     elmts = document.getElementsByTagName('body')[0].querySelectorAll(mailtoSelector);
     elmts = Array.from(elmts);
     elmts = elmts.filter(canBeMailto);
 
-    // loop through filtered array to
+    // loop through filtered array
     elmts.forEach(function(el) {
 
         // get email address from data-email attribute if it exists;
-        // or from HTML-only innerText, ignores HTML comments and <style> elements
+        // or from HTML-only innerText, which accounts for hidden elements
         // then use textContent which works with SVG
-		emailAddress = el.dataset.email || el.innerText || el.textContent;
-
-
-        // get email address from data-email attribute (preferred) or text content;
-        // for text content, use HTML-only innerText first, since this ignores HTML comments;
-        // then use textContent which works with SVG; if those fail, set to empty
-        // string to avoid fatal error caused by using trim() on null
-		emailAddress = el.dataset.email || el.innerText || el.textContent || "";
+		emailAddress = el.dataset.email || el.innerText || el.textContent || '';
 
 		emailAddress = emailAddress.trim();
 
-		// validate email address
+        // validate email address
 		if (/^[^@]+@[^@.]+\.[^@]*\w\w$/.test(emailAddress)) {
 
-			// create <a> element
+            // create <a> element
             if ( el.closest('svg') ) {
                 mailtoElement = document.createElementNS('http://www.w3.org/2000/svg','a');
             }
