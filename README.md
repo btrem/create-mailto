@@ -58,3 +58,6 @@ plain html           | html with create-mailto.js (no markup changes)
 
 ## legacy broswer support
 The script create-mailto.js uses [modern javascript features](http://es6-features.org/). It should work with recent releases of all major browsers. If you need to support legacy browsers (e.g. Internet Explorer), then try the jQuery version create-mailto.jquery.js. You will need to include [jQuery](http://code.jquery.com/) in your web page.
+
+## tests
+There are [test web pages](tests/) to see if create-mailto.js is correctly inserting `mailto:` links where it should and not creating them where it shouldn't.
