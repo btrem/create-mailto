@@ -1,9 +1,11 @@
 # create-mailto
-A small javascript file to find email addresses in web pages and turn them into clickable `<a href=mailto.../>`.
+A small javascript file to find email addresses in web pages and turn them into clickable `<a href=mailto.../>` links.
 
 It is common to avoid using `<a href=mailto...>` in web pages to prevent spammers from harvesting your email address. If you put your email address in plain text on the page and add markup to identify it, the javascript file will add additional `<a>` markup to turn it into a normal "clickable" anchor element.
 
-To use, copy the javascript file to your webserver and add it to your page:
+ It is just one file which you'll find in the [root directory of the create-mailto repo](https://github.com/btrem/create-mailto). Or load the [raw version content of create-mailto.js](https://raw.githubusercontent.com/btrem/create-mailto/master/create-mailto.js) in your browser and save it.
+
+Copy the javascript file to your webserver and add it to your page with a `script` element:
 
 `<script src="create-mailto.js">`
 
