@@ -1,7 +1,7 @@
 /*
  * create-mailto.js
  *
- * version 0.8
+ * version 0.8.0
  *
  * find email addresses in web pages and turn them into clickable <a href=mailto>
  */
