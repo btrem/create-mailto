@@ -61,12 +61,12 @@ window.addEventListener('DOMContentLoaded', () => {
         // get email address from data-email attribute if it exists;
         // or from HTML-only innerText, which accounts for hidden elements
         // then use textContent which works with SVG
-		emailAddress = el.dataset.email || el.innerText || el.textContent || '';
+        emailAddress = el.dataset.email || el.innerText || el.textContent || '';
 
-		emailAddress = emailAddress.trim();
+        emailAddress = emailAddress.trim();
 
         // validate email address
-		if (/^[^@]+@[^@.]+\.[^@]*\w\w$/.test(emailAddress)) {
+        if (/^[^@]+@[^@.]+\.[^@]*\w\w$/.test(emailAddress)) {
 
             // create <a> element
             if ( el.closest('svg') ) {
@@ -76,26 +76,26 @@ window.addEventListener('DOMContentLoaded', () => {
                 mailtoElement = document.createElement('a');
             }
 
-			// set mailto: attribute to validated email address; use setAttributeNS in case el is <svg>
+            // set mailto: attribute to validated email address; use setAttributeNS in case el is <svg>
             mailtoElement.setAttributeNS(null, 'href', 'mailto:' + emailAddress);
 
             // check if element can't contain link
-            if ( el.matches(outerWrapElements ) ) {
+            if ( el.matches(outerWrapElements) ) {
                 // insert new empty <a> element into dom after target element
                 el.insertAdjacentElement('afterend', mailtoElement);
                 // move target element inside inserted <a>
                 mailtoElement.append(el);
-			}
+            }
             else {
                 // move children of target element out of DOM and into mailtoElement
                 while (el.firstChild) {
                     mailtoElement.appendChild(el.firstChild);
                 }
-			    // append mailtoElement to target element, putting it back into DOM
+                // append mailtoElement to target element, putting it back into DOM
                 el.append(mailtoElement);
             }
 
-		} // end if valid email address
+        } // end if valid email address
 
     });
 
